@@ -1,0 +1,31 @@
+# Nadia Privalikhina — AI Educator & Automation Consultant
+
+> Nadia Privalikhina helps solo operators, consultants, marketing and content teams, and creative strategists cut through the AI noise and build automations that actually work. She offers workshops, consulting, and hands-on training on n8n automation, AI agents, Claude Code, and practical AI workflows for operations and business processes. Based in Vienna, Austria.
+
+## Links
+
+- [Homepage](https://www.aiinsiders.co/)
+- [LinkedIn](https://www.linkedin.com/in/nadezhda-privalikhina/)
+- [YouTube](https://www.youtube.com/@nadiaaiinsiders)
+- [Book a Discovery Call](https://cal.com/nadia-privalikhina-mweimd/discovery-call)
+
+## Services
+
+- **Workshops & Speaking**: Hands-on AI workshops for teams and communities (online and in-person). Topics include n8n automation, AI tools for marketing & ops, and automation for non-technical people.
+- **Consulting & Training**: 1-on-1 and group sessions for founders and teams covering n8n, Claude Code for productivity, AI agents, and practical automation strategies.
+- **Implementation**: Custom AI automation for founder-led businesses in marketing, content operations, and personal productivity (limited availability, 1–2 projects at a time).
+
+## Topics Covered
+
+- n8n Automation
+- Building Your First AI Workflow
+- Claude Code for Productivity
+- Automation for Marketing & Ops
+- Content Operations with AI
+- Automation for Non-Technical Teams
+- Automation for Technical Teams
+
+## Contact
+
+- Email: nadia@aiinsiders.co
+- Location: Vienna, Austria
