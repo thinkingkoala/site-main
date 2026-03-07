@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n8n & AI Automation Fundamentals — Learn to Build Real AI Workflows</title>
+    <meta name="description" content="Build 4 real AI-powered workflows in n8n from scratch — no coding required. A self-paced course for AI operators, freelancers, and professionals who want automations that actually run.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aiinsiders.co/course/">
+
+    <meta property="og:title" content="n8n & AI Automation Fundamentals — Build Real AI Workflows Without Code">
+    <meta property="og:description" content="Learn to build 4 real AI-powered automations in n8n. Self-paced, beginner-friendly, taught by Nadia Privalikhina and Serop.">
+    <meta property="og:url" content="https://www.aiinsiders.co/course/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.aiinsiders.co/resources/beginner-course-li.webp">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .header-font { font-family: 'Bebas Neue', cursive; letter-spacing: 2px; }
+        .accent-text { color: #f5f5dc; }
+        .accent-border { border-color: #f5f5dc; }
+        .section-header {
+            color: #ffffff;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            border-left: 3px solid #f5f5dc;
+            padding-left: 10px;
+        }
+        nav { transition: background-color 0.3s; }
+        nav.scrolled {
+            background-color: rgba(0,0,0,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .cta-btn {
+            display: inline-block;
+            background-color: #f5f5dc;
+            color: #000000;
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.875rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.2s, transform 0.15s;
+        }
+        .cta-btn:hover { background-color: #e8e8c8; transform: translateY(-1px); }
+        .cta-btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: #f5f5dc;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.875rem 2rem;
+            border-radius: 6px;
+            border: 1px solid rgba(245,245,220,0.4);
+            text-decoration: none;
+            transition: border-color 0.2s, transform 0.15s;
+        }
+        .cta-btn-outline:hover { border-color: #f5f5dc; transform: translateY(-1px); }
+        .card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            transition: border-color 0.3s;
+        }
+        .card:hover { border-color: rgba(245,245,220,0.2); }
+        .module-card {
+            background: rgba(245,245,220,0.04);
+            border: 1px solid rgba(245,245,220,0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        .check-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; }
+        .check-icon { color: #F59E0B; margin-top: 2px; flex-shrink: 0; font-size: 0.85rem; }
+        .x-icon { color: #EF4444; margin-top: 2px; flex-shrink: 0; font-size: 0.85rem; }
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); }
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 1.25rem 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer { display: none; padding-bottom: 1.25rem; color: rgba(255,255,255,0.7); line-height: 1.7; }
+        .faq-answer.open { display: block; }
+        .faq-icon { transition: transform 0.2s; color: #f5f5dc; }
+        .faq-icon.rotated { transform: rotate(45deg); }
+        .proof-bar {
+            background: rgba(245,245,220,0.05);
+            border-top: 1px solid rgba(245,245,220,0.1);
+            border-bottom: 1px solid rgba(245,245,220,0.1);
+        }
+        .value-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .value-row:last-child { border-bottom: none; }
+        .so-what {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .challenge-banner {
+            background: rgba(245,245,220,0.06);
+            border: 1px solid rgba(245,245,220,0.15);
+            border-radius: 16px;
+        }
+        /* Cookie banner */
+        #cookie-banner {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+            background: rgba(20,20,20,0.97); border-top: 1px solid rgba(245,245,220,0.15);
+            padding: 1rem 1.5rem; display: flex; align-items: center;
+            justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+        }
+        #cookie-banner.hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner">
+    <p class="text-sm text-gray-300 m-0">This site uses only essential cookies necessary for it to function. No tracking or analytics cookies are used. <a href="/datenschutz/" class="underline text-gray-400 hover:text-white">Learn more</a></p>
+    <button onclick="dismissCookie()" class="cta-btn !py-2 !px-5 !text-xs flex-shrink-0">OK</button>
+</div>
+
+<!-- NAV -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 md:px-16 lg:px-24 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 text-white no-underline">
+        <span class="header-font text-xl tracking-widest accent-text">AI INSIDERS</span>
+    </a>
+    <a href="https://www.skool.com/real-world-n8n-community-6528/about" target="_blank" class="cta-btn !py-2 !px-5 !text-xs">Enroll — $149</a>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="pt-32 pb-16 px-6 md:px-16 lg:px-24">
+    <div class="max-w-4xl mx-auto text-center">
+        <p class="text-xs font-bold tracking-widest uppercase text-gray-500 mb-4">Self-Paced n8n Course &mdash; For Operators, Freelancers &amp; Non-Technical Professionals</p>
+        <h1 class="header-font text-5xl md:text-7xl lg:text-8xl leading-tight mb-6">
+            Stop Prompting AI.<br>
+            <span class="accent-text">Start Automating.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-4 max-w-2xl mx-auto">
+            Build four real n8n automations that work without you — and walk away with a skill that saves hours every week and that you can charge for. No coding required. No prior experience needed.
+        </p>
+        <p class="text-base text-gray-400 mb-10">AI users are everywhere. AI builders aren't.</p>
+        <a href="https://www.skool.com/real-world-n8n-community-6528/about" target="_blank" class="cta-btn text-lg !py-4 !px-10">
+            Enroll Now — $149 <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+        </a>
+        <p class="text-xs accent-text mt-4 opacity-70">Lifetime access &middot; Self-paced &middot; Community included</p>
+    </div>
+</section>
+
+<!-- ===================== COURSE BANNER ===================== -->
+<div class="px-6 md:px-16 lg:px-24">
+    <div class="max-w-4xl mx-auto relative">
+        <img src="../resources/beginner-course-li.webp" alt="n8n & AI Automation Fundamentals — Learn to Build Intelligent Workflows" class="w-full rounded-xl object-cover block" loading="eager">
+        <div class="absolute top-0 left-0 right-0 h-24 rounded-t-xl" style="background: linear-gradient(to top, transparent, #000000);"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-24 rounded-b-xl" style="background: linear-gradient(to bottom, transparent, #000000);"></div>
+    </div>
+</div>
+
+<!-- ===================== SOCIAL PROOF BAR ===================== -->
+<div class="proof-bar py-8 px-6 md:px-16 lg:px-24">
+    <div class="max-w-4xl mx-auto grid grid-cols-5 gap-4 text-center">
+        <div>
+            <div class="text-xl md:text-2xl font-black accent-text whitespace-nowrap">4 Projects</div>
+            <div class="text-[10px] accent-text opacity-50 uppercase tracking-wider mt-1 leading-tight">You'll Build<br>&amp; Keep</div>
+        </div>
+        <div>
+            <div class="text-xl md:text-2xl font-black accent-text whitespace-nowrap">~10 Hours</div>
+            <div class="text-[10px] accent-text opacity-50 uppercase tracking-wider mt-1 leading-tight">Zero to Done</div>
+        </div>
+        <div>
+            <div class="text-base md:text-xl font-black accent-text whitespace-nowrap">0 Tech Skills</div>
+            <div class="text-[10px] accent-text opacity-50 uppercase tracking-wider mt-1 leading-tight">Needed<br>to Start</div>
+        </div>
+        <div>
+            <div class="text-xl md:text-2xl font-black accent-text whitespace-nowrap">No Code</div>
+            <div class="text-[10px] accent-text opacity-50 uppercase tracking-wider mt-1 leading-tight">Required — Ever</div>
+        </div>
+        <div>
+            <div class="text-xl md:text-2xl font-black accent-text whitespace-nowrap">Lifetime</div>
+            <div class="text-[10px] accent-text opacity-50 uppercase tracking-wider mt-1 leading-tight">Access<br>Included</div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== PROBLEM ===================== -->
+<section class="py-16 md:py-20 px-6 md:px-16 lg:px-24 border-t border-white/5">
+    <div class="max-w-2xl mx-auto">
+        <h3 class="section-header mb-8">The Problem</h3>
+        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+            You've been using Claude. Or ChatGPT. Maybe both. You paste a prompt, get an output, copy it somewhere. It's faster than doing it manually — but you're still the one doing it.
+        </p>
+        <p class="text-gray-300 leading-relaxed mb-6">
+            That's not automation. That's you being a link in a chain that could run without you.
+        </p>
+        <p class="text-gray-300 leading-relaxed mb-6">
+            Real automation is triggered by something — a new email, a calendar booking, a form submission, a scheduled time. It runs in the background, every time, without anyone touching a keyboard. It scales. It doesn't forget. It doesn't need to be reminded.
+        </p>
+        <p class="font-bold text-white text-lg">
+            n8n is the infrastructure layer where all of that becomes possible. It connects your AI models to your real data, triggers, and tools — and unlike a chatbot, it runs automatically, whether you're at your desk or not.
+        </p>
+    </div>
+</section>
+
+<!-- ===================== SOLUTION ===================== -->
+<section class="py-16 md:py-20 px-6 md:px-16 lg:px-24 border-t border-white/5">
+    <div class="max-w-2xl mx-auto">
+        <h3 class="section-header mb-8">The Course</h3>
+        <h2 class="header-font text-4xl md:text-5xl accent-text mb-6">n8n &amp; AI Automation Fundamentals</h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+            This is a project-based course. Every module is a real workflow built from scratch — based on projects we use ourselves or have built for clients. Not textbook examples. Not tutorials with fake data.
+        </p>
+        <p class="text-gray-300 leading-relaxed mb-6">
+            By the end, you won't have watched videos about automation. You'll have four running automations — and the mental model to build whatever comes next on your own.
+        </p>
+        <p class="text-gray-300 leading-relaxed">
+            You don't need prior experience with n8n. You don't need a coding background. Just the willingness to follow along and press "execute."
+        </p>
+    </div>
+</section>
+
+<!-- ===================== WHO IT'S FOR ===================== -->
+<section class="py-16 md:py-20 px-6 md:px-16 lg:px-24 border-t border-white/5">
+    <div class="max-w-4xl mx-auto">
+        <h3 class="section-header mb-10">Who This Is For</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="card p-8">
+                <h4 class="font-bold text-white mb-6 text-lg">This is for you if&hellip;</h4>
+                <div class="check-item">
+                    <i class="fa-solid fa-check check-icon"></i>
+                    <p class="text-gray-300 text-sm leading-relaxed">You use AI tools like ChatGPT or Claude regularly, but everything still requires you to trigger it manually and copy the output somewhere.</p>
+                </div>
+                <div class="check-item">
+                    <i class="fa-solid fa-check check-icon"></i>
+                    <p class="text-gray-300 text-sm leading-relaxed">You work in marketing, operations, HR, or another operational role — and there are clearly repetitive tasks that shouldn't need your attention.</p>
+                </div>
+                <div class="check-item">
+                    <i class="fa-solid fa-check check-icon"></i>
+                    <p class="text-gray-300 text-sm leading-relaxed">You're an entrepreneur or freelancer who wants to automate client workflows, reporting, or internal processes.</p>
+                </div>
+                <div class="check-item">
+                    <i class="fa-solid fa-check check-icon"></i>
+                    <p class="text-gray-300 text-sm leading-relaxed">You want to become an AI Operator — someone who builds and manages AI-powered workflows as a professional skill.</p>
+                </div>
+                <div class="check-item">
+                    <i class="fa-solid fa-check check-icon"></i>
+                    <p class="text-gray-300 text-sm leading-relaxed">You're comfortable with software tools and digital workflows. You just don't write code and don't want to start now.</p>
+                </div>
+            </div>
+            <div class="card p-8">
+                <h4 class="font-bold text-white mb-6 text-lg">This is NOT for you if&hellip;</h4>
+                <div class="check-item">
+                    <i class="fa-solid fa-xmark x-icon"></i>
+                    <p class="text-gray-300 text-sm leading-relaxed">You want to watch videos and feel informed without actually building anything. This course is hands-on from lesson one.</p>
+                </div>
+                <div class="check-item">
+                    <i class="fa-solid fa-xmark x-icon"></i>
+                    <p class="text-gray-300 text-sm leading-relaxed">You're already building complex n8n workflows and want advanced production architecture. Check out the <a href="/cohort/" class="underline text-gray-400 hover:text-white">n8n Cohort</a> instead.</p>
+                </div>
+                <div class="check-item">
+                    <i class="fa-solid fa-xmark x-icon"></i>
+                    <p class="text-gray-300 text-sm leading-relaxed">You want someone else to build the automations for you. This course teaches you to build them yourself.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== WHAT YOU'LL BUILD ===================== -->
+<section class="py-16 md:py-20 px-6 md:px-16 lg:px-24 border-t border-white/5">
+    <div class="max-w-4xl mx-auto">
+        <h3 class="section-header mb-3">What You'll Build</h3>
+        <p class="text-gray-500 text-sm mb-10">4 complete projects. Each one runs after you finish the module.</p>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-10">
+
+            <div class="module-card">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-robot text-xs accent-text"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-gray-500">Module 1</span>
+                </div>
+                <h4 class="font-bold text-white text-lg mb-2">Support Ticket Triage Bot</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    A message comes in. Should it go to billing, support, or sales? You'll build a rule-based version first — then replace the rules with an AI agent that reads the message and decides on its own.
+                </p>
+                <div class="so-what">
+                    <p class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-2">Why this matters</p>
+                    <p class="text-gray-300 text-sm leading-relaxed">This is how AI agents work: a brain connected to tools that can take action. The most fundamental pattern in all of AI automation.</p>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-receipt text-xs accent-text"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-gray-500">Module 2</span>
+                </div>
+                <h4 class="font-bold text-white text-lg mb-2">AI Receipt Scanner</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Upload a receipt photo or PDF. The automation reads it with AI, pulls the vendor, date, amount, and category, and saves everything to a spreadsheet. Zero manual entry.
+                </p>
+                <div class="so-what">
+                    <p class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-2">Why this matters</p>
+                    <p class="text-gray-300 text-sm leading-relaxed">OCR, document parsing, and structured data outputs are the backbone of most business process automation — expense reports, invoices, onboarding, contracts.</p>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-newspaper text-xs accent-text"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-gray-500">Module 3</span>
+                </div>
+                <h4 class="font-bold text-white text-lg mb-2">AI News Digest</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Every morning, a workflow fires on a schedule — pulls from multiple news sources, summarizes each story with AI, and delivers a clean, professionally formatted email digest. Nobody presses anything.
+                </p>
+                <div class="so-what">
+                    <p class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-2">Why this matters</p>
+                    <p class="text-gray-300 text-sm leading-relaxed">Scheduled workflows, multi-source data, and AI summarization are essential for any recurring report, monitoring alert, or daily briefing a business needs to run.</p>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-calendar-check text-xs accent-text"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-gray-500">Module 4</span>
+                </div>
+                <h4 class="font-bold text-white text-lg mb-2">Smart Meeting Prep Agent</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    A meeting gets booked. A webhook fires instantly. AI researches the contact, builds a briefing, sends it to Slack. You walk into the call already prepared — automatically.
+                </p>
+                <div class="so-what">
+                    <p class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-2">Why this matters</p>
+                    <p class="text-gray-300 text-sm leading-relaxed">Webhooks, HTTP requests, and event-triggered multi-step agents are how most real-world automations are built. Almost every production pipeline uses at least one of these.</p>
+                </div>
+            </div>
+        </div>
+
+        <details class="card p-6 md:p-8">
+            <summary class="font-bold text-white cursor-pointer flex justify-between items-center list-none">
+                <span>Full Course Breakdown</span>
+                <i class="fa-solid fa-chevron-down text-gray-500 text-sm"></i>
+            </summary>
+            <div class="grid md:grid-cols-2 gap-x-8 mt-6">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-gray-600 mb-3">Module 0 — Introduction</p>
+                    <ul class="text-gray-400 text-sm space-y-1 mb-4 list-disc list-inside">
+                        <li>What automation actually is (and isn't)</li>
+                        <li>Why n8n over other tools</li>
+                        <li>Setting up your workspace</li>
+                    </ul>
+                    <p class="text-xs font-bold uppercase tracking-widest text-gray-600 mb-3">Module 1 — Support Ticket Triage Bot</p>
+                    <ul class="text-gray-400 text-sm space-y-1 mb-4 list-disc list-inside">
+                        <li>Building logic rules with the Switch node</li>
+                        <li>Replacing rules with an AI agent</li>
+                        <li>How AI agents work in n8n</li>
+                    </ul>
+                    <p class="text-xs font-bold uppercase tracking-widest text-gray-600 mb-3">Module 2 — AI Receipt Scanner</p>
+                    <ul class="text-gray-400 text-sm space-y-1 mb-4 list-disc list-inside">
+                        <li>Building the intake form</li>
+                        <li>OCR and AI text extraction</li>
+                        <li>Saving structured data to Google Sheets</li>
+                        <li>Handling PDFs</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-gray-600 mb-3">Module 3 — AI News Digest</p>
+                    <ul class="text-gray-400 text-sm space-y-1 mb-4 list-disc list-inside">
+                        <li>RSS feeds and web search as data sources</li>
+                        <li>Merging, filtering, deduplicating</li>
+                        <li>AI summarization and email delivery</li>
+                        <li>Scheduling and keeping it running</li>
+                    </ul>
+                    <p class="text-xs font-bold uppercase tracking-widest text-gray-600 mb-3">Module 4 — Smart Meeting Prep Agent</p>
+                    <ul class="text-gray-400 text-sm space-y-1 mb-4 list-disc list-inside">
+                        <li>Webhooks and event-triggered flows</li>
+                        <li>HTTP requests and external APIs</li>
+                        <li>AI research and multi-tool agents</li>
+                        <li>Slack notifications and CRM updates</li>
+                    </ul>
+                    <p class="text-xs font-bold uppercase tracking-widest text-gray-600 mb-3">Module 5 — Production &amp; Error Handling</p>
+                    <ul class="text-gray-400 text-sm space-y-1 mb-4 list-disc list-inside">
+                        <li>Making your workflows reliable</li>
+                        <li>Failure alerts so nothing breaks silently</li>
+                        <li>Next steps and what to build next</li>
+                    </ul>
+                </div>
+            </div>
+        </details>
+    </div>
+</section>
+
+<!-- ===================== SELF-PACED ===================== -->
+<section class="py-16 md:py-20 px-6 md:px-16 lg:px-24 border-t border-white/5">
+    <div class="max-w-4xl mx-auto text-center">
+        <h3 class="section-header mb-8 text-left">Your Pace. Your Schedule.</h3>
+        <div class="grid md:grid-cols-3 gap-6 text-left">
+            <div class="card p-6">
+                <i class="fa-solid fa-infinity accent-text text-xl mb-4"></i>
+                <h4 class="font-bold text-white mb-2">Lifetime Access</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">Buy once, access forever. Work through it over a weekend, one module a week, or whenever life allows — it fits around your schedule, not the other way around.</p>
+            </div>
+            <div class="card p-6">
+                <i class="fa-solid fa-people-group accent-text text-xl mb-4"></i>
+                <h4 class="font-bold text-white mb-2">Community Included</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">Access to the Real-World AI Builders Skool community is included. Post questions, share what you build, and get help from Nadia, Serop, and fellow students.</p>
+            </div>
+            <div class="card p-6">
+                <i class="fa-solid fa-list-check accent-text text-xl mb-4"></i>
+                <h4 class="font-bold text-white mb-2">Project Checklists</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">Each module comes with a checklist so you know exactly what you should have built before moving on.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FREE CHALLENGE CALLOUT ===================== -->
+<section class="py-10 px-6 md:px-16 lg:px-24">
+    <div class="max-w-4xl mx-auto">
+        <div class="challenge-banner p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6">
+            <div class="flex-shrink-0">
+                <div class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center">
+                    <i class="fa-solid fa-bolt accent-text text-2xl"></i>
+                </div>
+            </div>
+            <div class="flex-1">
+                <p class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-2">Free — Inside the Community</p>
+                <h3 class="font-bold text-white text-xl mb-2">New to n8n? Start With the 3-Day Challenge</h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Before the course begins, get n8n installed and your very first automation running in three days — for free. It's available to all members of the Real-World AI Builders community and designed to make sure you hit the ground running when you start the course.
+                </p>
+            </div>
+            <a href="https://www.skool.com/real-world-n8n-community-6528/about" target="_blank" class="cta-btn-outline flex-shrink-0 !text-xs whitespace-nowrap">Join Free</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== INSTRUCTORS ===================== -->
+<section class="py-16 md:py-20 px-6 md:px-16 lg:px-24 border-t border-white/5">
+    <div class="max-w-4xl mx-auto">
+        <h3 class="section-header mb-10">Who You'll Learn From</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+
+            <!-- Nadia -->
+            <div class="card p-8 flex flex-col">
+                <img src="../resources/nadia-professional-photo.webp" alt="Nadia Privalikhina" class="w-full rounded-xl object-cover mb-6" style="max-height: 280px; object-fit: cover; object-position: top;">
+                <h2 class="header-font text-3xl accent-text mb-1">NADIA PRIVALIKHINA</h2>
+                <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">AI Educator &amp; Automation Consultant — Vienna, Austria</p>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    Nadia has trained thousands of people on n8n and worked with 20+ clients on real automation projects. She regularly teaches at online academies and communities — and what she covers in this course is what she actually builds and ships for clients.
+                </p>
+                <p class="text-gray-300 text-sm leading-relaxed mb-5">
+                    Her background is in web development and software systems, which means she understands how automations fit into real infrastructure — not just how to make a demo run once.
+                </p>
+                <div class="mt-auto">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1.5 rounded-full border border-white/10 text-gray-400">20+ Clients Served</span>
+                        <span class="text-xs px-3 py-1.5 rounded-full border border-white/10 text-gray-400">Thousands Trained on n8n</span>
+                        <span class="text-xs px-3 py-1.5 rounded-full border border-white/10 text-gray-400">Vienna, Austria</span>
+                    </div>
+                    <a href="https://www.youtube.com/@nadiaaiinsiders" target="_blank" class="inline-flex items-center gap-2 text-xs text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        Watch on YouTube
+                    </a>
+                </div>
+            </div>
+
+            <!-- Serop -->
+            <div class="card p-8 flex flex-col">
+                <img src="../resources/instructor-serop-photo.jpg" alt="Serop" class="w-full rounded-xl object-cover mb-6" style="max-height: 280px; object-fit: cover; object-position: center 20%;">
+                <h2 class="header-font text-3xl accent-text mb-1">SEROP BAGHDADLIAN</h2>
+                <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">AI Automation Agency Owner &amp; AI Consultant — Berlin, Germany</p>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    Serop has shipped 20+ client automation systems using n8n through his AI automation agency. He builds in production, charges for it, and documents the actual logic — not simplified demos.
+                </p>
+                <p class="text-gray-300 text-sm leading-relaxed mb-5">
+                    His background is in machine learning, which gives him a clear mental model for where AI fits inside a workflow and where it doesn't. That clarity is what this course is built on.
+                </p>
+                <div class="mt-auto">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1.5 rounded-full border border-white/10 text-gray-400">AI Automation Agency</span>
+                        <span class="text-xs px-3 py-1.5 rounded-full border border-white/10 text-gray-400">20+ Clients Served</span>
+                        <span class="text-xs px-3 py-1.5 rounded-full border border-white/10 text-gray-400">Berlin, Germany</span>
+                    </div>
+                    <a href="https://www.youtube.com/@serop-ai" target="_blank" class="inline-flex items-center gap-2 text-xs text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        Watch on YouTube
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="py-16 md:py-20 px-6 md:px-16 lg:px-24 border-t border-white/5">
+    <div class="max-w-4xl mx-auto">
+        <h3 class="section-header mb-10">What Students Say</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="card p-8">
+                <div class="flex gap-1 mb-4">
+                    <i class="fa-solid fa-star text-yellow-500 text-sm"></i>
+                    <i class="fa-solid fa-star text-yellow-500 text-sm"></i>
+                    <i class="fa-solid fa-star text-yellow-500 text-sm"></i>
+                    <i class="fa-solid fa-star text-yellow-500 text-sm"></i>
+                    <i class="fa-solid fa-star text-yellow-500 text-sm"></i>
+                </div>
+                <p class="text-gray-300 leading-relaxed mb-4 italic">"I've genuinely been enjoying the course. It's really well put together, especially for beginners. Everything felt super approachable and easy to follow."</p>
+                <p class="text-sm text-gray-500">— Ann-Marie Ebitimi, AI Trainer</p>
+            </div>
+            <div class="card p-8">
+                <div class="flex gap-1 mb-4">
+                    <i class="fa-solid fa-star text-yellow-500 text-sm"></i>
+                    <i class="fa-solid fa-star text-yellow-500 text-sm"></i>
+                    <i class="fa-solid fa-star text-yellow-500 text-sm"></i>
+                    <i class="fa-solid fa-star text-yellow-500 text-sm"></i>
+                    <i class="fa-solid fa-star text-yellow-500 text-sm"></i>
+                </div>
+                <p class="text-gray-300 leading-relaxed mb-4 italic">"I was already using Claude Code for a lot of things, but I wanted something more robust for automations that run reliably in the background. This course gave me the fundamentals I was missing — the basics aren't easy to pick up on your own, and having them explained clearly made a real difference."</p>
+                <p class="text-sm text-gray-500">— Clément Hynaux, Marketing Manager</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== OFFER / VALUE STACK ===================== -->
+<section class="py-16 md:py-20 px-6 md:px-16 lg:px-24 border-t border-white/5">
+    <div class="max-w-2xl mx-auto">
+        <h3 class="section-header mb-10">Everything Included</h3>
+        <div class="card p-8 mb-8">
+            <div class="value-row">
+                <span class="text-gray-300">6 modules — hands-on video lessons</span>
+                <span class="text-gray-600 text-sm">Core content</span>
+            </div>
+            <div class="value-row">
+                <span class="text-gray-300">4 complete real-world projects</span>
+                <span class="text-gray-600 text-sm">Build &amp; keep</span>
+            </div>
+            <div class="value-row">
+                <span class="text-gray-300">Per-module checklists</span>
+                <span class="text-gray-600 text-sm">Included</span>
+            </div>
+            <div class="value-row">
+                <span class="text-gray-300">Lifetime access — yours forever</span>
+                <span class="text-gray-600 text-sm">No expiry</span>
+            </div>
+            <div class="value-row">
+                <span class="text-gray-300">Real-World AI Builders community access</span>
+                <span class="text-gray-600 text-sm">Ask &amp; get answers</span>
+            </div>
+            <div class="value-row">
+                <span class="text-gray-300">3-day n8n challenge (community)</span>
+                <span class="text-gray-600 text-sm">Warm-up included</span>
+            </div>
+            <div class="value-row">
+                <span class="text-gray-300">All future updates to the course</span>
+                <span class="text-gray-600 text-sm">Included</span>
+            </div>
+        </div>
+        <div class="challenge-banner p-8 mb-8">
+            <div class="flex flex-col md:flex-row items-start gap-6">
+                <div class="flex-shrink-0">
+                    <div class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center">
+                        <i class="fa-solid fa-clock-rotate-left accent-text text-2xl"></i>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <p class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-4">What You're Actually Buying</p>
+                    <div class="space-y-3 text-sm text-gray-400 leading-relaxed mb-5">
+                        <p><span class="text-white font-semibold">Receipt Scanner</span> — 5 min per receipt × 20/month = 1.5–2 hours back every month, permanently.</p>
+                        <p><span class="text-white font-semibold">Meeting Prep Agent</span> — 30 min of research per call. 8 meetings/month = 4 hours you stop doing manually.</p>
+                        <p><span class="text-white font-semibold">News Digest</span> — 30 min of reading condensed to a 5-minute brief. Every morning. Automatically.</p>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed border-t border-white/10 pt-4">These automations recover the course price in saved time within the first month — and keep running indefinitely. But the bigger return is the skill itself. The ability to build workflows that connect AI to real systems is becoming a baseline requirement across business, operations, and digital work. That's not going away. It's going in one direction.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <p class="text-4xl font-black accent-text mb-2">$149</p>
+            <p class="text-gray-500 text-sm mb-8">One-time payment &middot; Lifetime access</p>
+            <a href="https://www.skool.com/real-world-n8n-community-6528/about" target="_blank" class="cta-btn text-lg !py-4 !px-10">
+                Enroll Now — $149 <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+            </a>
+            <p class="text-xs text-gray-400 mt-4">You'll be taken to the Real-World AI Builders Skool community. Request to join, then go to the Classroom to complete your enrollment.</p>
+            <div class="mt-8 pt-6 border-t border-white/5">
+                <p class="text-xs font-bold uppercase tracking-widest text-gray-600 mb-2">30-Day Money-Back Guarantee</p>
+                <p class="text-sm text-gray-500 leading-relaxed max-w-sm mx-auto">Build the first two projects. If you don't feel it's worth it, email us and we'll refund you in full — no questions asked. We're confident the work speaks for itself.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="py-16 md:py-20 px-6 md:px-16 lg:px-24 border-t border-white/5">
+    <div class="max-w-2xl mx-auto">
+        <h3 class="section-header mb-10">Questions</h3>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Do I need to know how to code?
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+                No. This course was built specifically for non-technical professionals. You'll learn by doing — building real workflows — and the only tool you need to know how to use beforehand is a web browser.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                What tools do I need? Is there any cost beyond the course?
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+                n8n has a free self-hosted option and a free cloud tier. Most tools used in the course — including AI APIs and Cal.com — have free tiers sufficient for learning. Exa, used in one module, includes free usage that covers everything you'll do in the course.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                What if I don't use one of the specific tools in a module?
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+                The concepts transfer directly. For example, the Meeting Prep module uses Cal.com — if you use a different booking tool, the webhook and HTTP patterns you learn are identical. The community is there to help you adapt any workflow to your actual setup.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                How much time will this take?
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+                There are around 4 hours of recorded content. To actually build each project and apply what you've learned, plan for 10–12 hours of focused study total. That said, there's no deadline and access doesn't expire — work through it at whatever pace fits your life.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                What if I get stuck?
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+                Your enrollment includes access to the Real-World AI Builders community. Post your question, share a screenshot, describe where you're stuck — Nadia, Serop, and fellow students are there to help.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                I've never used n8n before. Where should I start?
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+                This course starts from zero — no prior n8n experience needed. If you want a gentle warm-up first, the free 3-day n8n challenge inside the community walks you through installing n8n and building your first automation before the course even starts.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                I'm already building workflows. Is this too basic for me?
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+                If you can already build multi-node n8n workflows and have connected AI models to external APIs, this course is likely too introductory. The <a href="/cohort/" class="underline text-gray-300 hover:text-white">n8n Cohort</a> is built for people at that level who want to go from working prototypes to production-ready systems.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                How is this different from cheaper courses or free YouTube tutorials?
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+                Most n8n content online shows you how a node works in isolation. This course teaches you how automations are actually built for clients — the logic, the decisions, the failure handling, and why things are structured the way they are.<br><br>
+                Nadia and Serop aren't just educators. Nadia has a professional background in web development and has been building automation systems for clients for years. Serop has a background in machine learning and runs an AI automation agency. Between them, they've built the kind of systems that are actually used in business operations — not demo projects.<br><br>
+                The course is designed so every building block is introduced in context, the moment you actually need it. You learn by building, not by reading theory. And by the end, you'll have four working automations that are genuinely useful — systems that will save you real time from the day you finish them.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FINAL CTA ===================== -->
+<section class="py-20 md:py-28 px-6 md:px-16 lg:px-24 border-t border-white/5 text-center">
+    <div class="max-w-2xl mx-auto">
+        <h2 class="header-font text-5xl md:text-6xl mb-6">
+            Stop Triggering AI Manually.<br>
+            <span class="accent-text">Build It to Run Without You.</span>
+        </h2>
+        <p class="text-gray-400 leading-relaxed mb-10">
+            Every workflow you build in this course is something you can adapt and run in your own work immediately. Not someday. This week.
+        </p>
+        <a href="https://www.skool.com/real-world-n8n-community-6528/about" target="_blank" class="cta-btn text-lg !py-4 !px-10">
+            Enroll Now — $149 <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+        </a>
+        <p class="text-xs text-gray-600 mt-4">Lifetime access &middot; Community included &middot; Start today</p>
+
+        <p class="text-sm text-gray-500 mt-16 pt-10 border-t border-white/5">
+            <strong class="text-gray-400">P.S.</strong> — The only reason not to buy this is if you think you won't actually do it. If that's you, don't buy it. But if you're going to build these automations eventually anyway — do it with a structured path, real projects, and instructors who've already built this for paying clients. <a href="https://www.skool.com/real-world-n8n-community-6528/about" target="_blank" class="underline hover:text-white">$149. Start today.</a>
+        </p>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="py-10 px-6 md:px-16 lg:px-24 border-t border-white/5">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <a href="/" class="header-font text-lg accent-text tracking-widest">AI INSIDERS</a>
+        <div class="flex flex-wrap gap-6 text-xs text-gray-600 justify-center">
+            <a href="/" class="hover:text-gray-400 transition-colors">← Back to Main Site</a>
+            <a href="/cohort/" class="hover:text-gray-400 transition-colors">n8n Cohort</a>
+            <a href="/impressum/" class="hover:text-gray-400 transition-colors">Impressum</a>
+            <a href="/agb/" class="hover:text-gray-400 transition-colors">AGB</a>
+            <a href="/datenschutz/" class="hover:text-gray-400 transition-colors">Datenschutz</a>
+        </div>
+        <p class="text-xs text-gray-700">&copy; 2026 Nadezhda Privalikhina</p>
+    </div>
+</footer>
+
+<script>
+    // Nav scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // FAQ toggle
+    function toggleFaq(btn) {
+        const answer = btn.nextElementSibling;
+        const icon = btn.querySelector('.faq-icon');
+        answer.classList.toggle('open');
+        icon.classList.toggle('rotated');
+    }
+
+    // Cookie banner
+    function dismissCookie() {
+        document.getElementById('cookie-banner').classList.add('hidden');
+        localStorage.setItem('cookie_ok', '1');
+    }
+    if (localStorage.getItem('cookie_ok')) {
+        document.getElementById('cookie-banner').classList.add('hidden');
+    }
+</script>
+</body>
+</html>
