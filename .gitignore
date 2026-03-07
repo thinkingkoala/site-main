@@ -1,1 +1,5 @@
 .claude/settings.local.json
+convert-to-webp.js
+package-lock.json
+package.json
+node_modules

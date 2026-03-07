@@ -20,12 +20,43 @@
 - n8n Automation
 - Building Your First AI Workflow
 - Claude Code for Productivity
+- Claude Code for Content Ops
 - Automation for Marketing & Ops
 - Content Operations with AI
 - Automation for Non-Technical Teams
 - Automation for Technical Teams
 
+## Courses & Programs
+
+Nadia teaches two learning paths, co-instructed with Serop Baghdadlian (Berlin, Germany) — both active practitioners who build and sell automation systems to clients.
+
+- [n8n & AI Automation Fundamentals](https://www.aiinsiders.co/course/): Self-paced beginner course. Build 4 real AI-powered workflows in n8n — no coding required. Includes a Support Ticket Triage Bot, AI Receipt Scanner, AI News Digest, and Smart Meeting Prep Agent. $149 one-time, lifetime access. Community included.
+
+- [n8n Cohort — Production-Ready AI Systems](https://www.aiinsiders.co/cohort/): 6-week live cohort for intermediate builders. Covers problem analysis, workflow architecture, AI agent design, error handling, tool selection. 5 real client projects built across 6 weeks. 2 live sessions per week, 10-15h/week commitment. Early bird $750 (regular $997). Batch 1 graduated; Batch 2 waitlist open.
+
+## Co-Instructor
+
+- **Serop Baghdadlian** — AI automation agency owner based in Berlin, Germany. Runs an AI automation agency. Has shipped 20+ production automation systems for clients from scaling startups to Fortune 500 companies. Background in machine learning. YouTube: @serop-ai. LinkedIn: /in/serop-baghdadlian/
+
+## Community
+
+- [Real-World AI Builders Community (Skool)](https://www.skool.com/real-world-n8n-community-6528/about): Included with all courses. Free to join for the 3-day n8n challenge. Active instructor support.
+
+## Key Facts
+
+- Website: aiinsiders.co
+- Tools taught: n8n (primary), Claude Code (secondary)
+- Beginner n8n course price: $149 (one-time, lifetime access)
+- Production Systems n8n Cohort price: $750 early bird / $997 regular
+- Cohort format: Live + recorded, blended learning, 6 weeks
+- Beginner course format: Self-paced, online, ~10 hours total
+- Target audience (beginner course): Non-technical professionals, marketers, operators, freelancers who want to automate workflows without coding
+- Target audience (cohort): Intermediate builders with prior automation tool experience, comfortable with APIs and JSON
+- Legal jurisdiction: Austria
+
 ## Contact
 
 - Email: nadia@aiinsiders.co
 - Location: Vienna, Austria
+
+---
