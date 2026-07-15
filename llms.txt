@@ -12,14 +12,14 @@
 ## Services
 
 - **Workshops & Speaking**: Hands-on AI workshops for teams and communities (online and in-person). Topics include n8n automation, AI tools for marketing & ops, and automation for non-technical people.
-- **Consulting & Training**: 1-on-1 and group sessions for founders and teams covering n8n, Claude Code for productivity, AI agents, and practical automation strategies.
-- **Implementation**: Custom AI automation for founder-led businesses in marketing, content operations, and personal productivity (limited availability, 1–2 projects at a time).
+- **1:1 Coaching & Advisory**: Personal AI coaching for founders, consultants, and professionals. Two focus areas: (1) Claude Code initial setup & second brain — folder structure, context architecture, memory systems, permissions/guardrails, automation workflows; (2) AI workflows for marketing & content operations. Weekly 1:1 sessions (typically ~8 weeks) with materials, implementation guidance, and homework between sessions.
+- **Long-Term Advisory**: Ongoing AI advisory for founders, marketing teams, and AI trainers — regular check-ins, reviews of your AI/Claude Code setup, and guidance as new approaches and best practices emerge.
 
 ## Topics Covered
 
 - n8n Automation
 - Building Your First AI Workflow
-- Claude Code for Productivity
+- Claude for Productivity
 - Claude Code for Content Ops
 - Automation for Marketing & Ops
 - Content Operations with AI
@@ -28,15 +28,11 @@
 
 ## Courses & Programs
 
-Nadia teaches two learning paths, co-instructed with Serop Baghdadlian (Berlin, Germany) — both active practitioners who build and sell automation systems to clients.
+Past and self-paced programs. Batch 1 of the cohort was co-instructed with a guest co-instructor; the program has since changed and any future edition will run in an updated format.
 
 - [n8n & AI Automation Fundamentals](https://www.aiinsiders.co/course/): Self-paced beginner course. Build 4 real AI-powered workflows in n8n — no coding required. Includes a Support Ticket Triage Bot, AI Receipt Scanner, AI News Digest, and Smart Meeting Prep Agent. $149 one-time, lifetime access. Community included.
 
-- [n8n Cohort — Production-Ready AI Systems](https://www.aiinsiders.co/cohort/): 6-week live cohort for intermediate builders. Covers problem analysis, workflow architecture, AI agent design, error handling, tool selection. 5 real client projects built across 6 weeks. 2 live sessions per week, 10-15h/week commitment. Early bird $750 (regular $997). Batch 1 graduated; Batch 2 waitlist open.
-
-## Co-Instructor
-
-- **Serop Baghdadlian** — AI automation agency owner based in Berlin, Germany. Runs an AI automation agency. Has shipped 20+ production automation systems for clients from scaling startups to Fortune 500 companies. Background in machine learning. YouTube: @serop-ai. LinkedIn: /in/serop-baghdadlian/
+- [n8n Cohort — Production-Ready AI Systems](https://www.aiinsiders.co/cohort/): 6-week live cohort for intermediate builders. Covers problem analysis, workflow architecture, AI agent design, error handling, tool selection. 5 real client projects built across 6 weeks. 2 live sessions per week, 10-15h/week commitment. Early bird $750 (regular $997). Batch 1 graduated (16 students); no new batch currently scheduled — email signup available for future batches.
 
 ## Community
 
@@ -44,6 +40,9 @@ Nadia teaches two learning paths, co-instructed with Serop Baghdadlian (Berlin, 
 
 ## Key Facts
 
+- Background: 10 years as a backend engineer (DataArt, International Atomic Energy Agency) before moving into AI education and consulting
+- Runs her own business on the same Claude Code and n8n systems she teaches
+- Recognition: Top 5% LinkedIn creator worldwide (Favikon), Top 200 AI Workflow Automation Creators worldwide, DataCamp guest instructor (live code-along)
 - Website: aiinsiders.co
 - Tools taught: n8n (primary), Claude Code (secondary)
 - Beginner n8n course price: $149 (one-time, lifetime access)
