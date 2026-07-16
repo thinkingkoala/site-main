@@ -1021,6 +1021,17 @@
             navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
 
+        // Track "Book a Call" clicks (fires only if analytics consent was given)
+        document.addEventListener('click', function (e) {
+            const link = e.target.closest('a[href*="cal.com"]');
+            if (link && typeof gtag === 'function') {
+                gtag('event', 'book_call_click', {
+                    event_category: 'engagement',
+                    event_label: link.textContent.trim() || 'Book a Call'
+                });
+            }
+        });
+
         function toggleWall() {
             const wall = document.getElementById('testimonial-wall');
             const btn = document.getElementById('wall-toggle');
