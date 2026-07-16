@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics (loads only after cookie consent) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.loadGoogleAnalytics = function() {
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-5LYB92T39L';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-5LYB92T39L');
+  };
+  if (localStorage.getItem('cookie_consent') === 'accepted') {
+    window.loadGoogleAnalytics();
+  }
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What They Offered Me — A Field Guide for New AI Service Providers</title>
@@ -128,5 +146,7 @@
     <footer>
         <a href="/">aiinsiders.co</a> &middot; Nadia Privalikhina &middot; Vienna, Austria
     </footer>
+
+    <script src="/cookie-banner.js"></script>
 </body>
 </html>

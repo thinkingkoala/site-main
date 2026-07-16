@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+<!-- Google Analytics (loads only after cookie consent) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.loadGoogleAnalytics = function() {
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-5LYB92T39L';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-5LYB92T39L');
+  };
+  if (localStorage.getItem('cookie_consent') === 'accepted') {
+    window.loadGoogleAnalytics();
+  }
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impressum — AI Insiders</title>
@@ -28,13 +46,6 @@
         .legal-section:last-child { border-bottom: none; }
         a { color: #f5f5dc; text-decoration: underline; }
         a:hover { color: #ffffff; }
-        #cookie-banner {
-            position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
-            background: rgba(20,20,20,0.97); border-top: 1px solid rgba(245,245,220,0.15);
-            padding: 1rem 1.5rem; display: flex; align-items: center;
-            justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-        }
-        #cookie-banner.hidden { display: none; }
         .cta-btn {
             display: inline-block; background-color: #f5f5dc; color: #000000;
             font-weight: 800; font-size: 0.85rem; letter-spacing: 1px;
@@ -45,11 +56,7 @@
 </head>
 <body>
 
-<!-- Cookie Banner -->
-<div id="cookie-banner">
-    <p class="text-sm text-gray-300 m-0">Diese Website verwendet ausschließlich technisch notwendige Cookies. <a href="/datenschutz/">Mehr erfahren</a></p>
-    <button onclick="dismissCookie()" class="cta-btn !py-2 !px-5 !text-xs flex-shrink-0">OK</button>
-</div>
+<script src="/cookie-banner.js"></script>
 
 <!-- NAV -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 md:px-16 lg:px-24 py-4 flex items-center justify-between">
@@ -62,7 +69,9 @@
     <div class="max-w-2xl mx-auto">
 
         <h1 class="header-font text-5xl accent-text mb-2">IMPRESSUM</h1>
-        <p class="text-gray-300 text-xs uppercase tracking-widest mb-12">Offenlegung gem. § 5 ECG &amp; § 25 MedienG</p>
+        <p class="text-gray-300 text-xs uppercase tracking-widest mb-6">Offenlegung gem. § 5 ECG &amp; § 25 MedienG</p>
+
+        <p style="background: rgba(245,245,220,0.05); border: 1px solid rgba(245,245,220,0.12); border-radius: 8px; padding: 0.75rem 1rem; color: #a0a0a0; font-size: 0.8rem;" class="mb-12">🇬🇧 This page is available in German only, as required by Austrian law. Questions? Email <a href="mailto:nadia@aiinsiders.co">nadia@aiinsiders.co</a> and I'm happy to help in English.</p>
 
         <div class="legal-section">
             <h2 class="text-sm font-bold uppercase tracking-widest text-gray-200 mb-4">Angaben gem. § 5 ECG</h2>
@@ -128,11 +137,6 @@
 <script>
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
-    function dismissCookie() {
-        document.getElementById('cookie-banner').classList.add('hidden');
-        localStorage.setItem('cookie_ok', '1');
-    }
-    if (localStorage.getItem('cookie_ok')) { document.getElementById('cookie-banner').classList.add('hidden'); }
 </script>
 </body>
 </html>

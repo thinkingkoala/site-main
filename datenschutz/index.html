@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+<!-- Google Analytics (loads only after cookie consent) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.loadGoogleAnalytics = function() {
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-5LYB92T39L';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-5LYB92T39L');
+  };
+  if (localStorage.getItem('cookie_consent') === 'accepted') {
+    window.loadGoogleAnalytics();
+  }
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutzerklärung — AI Insiders</title>
@@ -27,13 +45,6 @@
         ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
         a { color: #f5f5dc; text-decoration: underline; }
         a:hover { color: #ffffff; }
-        #cookie-banner {
-            position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
-            background: rgba(20,20,20,0.97); border-top: 1px solid rgba(245,245,220,0.15);
-            padding: 1rem 1.5rem; display: flex; align-items: center;
-            justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-        }
-        #cookie-banner.hidden { display: none; }
         .cta-btn {
             display: inline-block; background-color: #f5f5dc; color: #000000;
             font-weight: 800; font-size: 0.85rem; letter-spacing: 1px;
@@ -55,11 +66,7 @@
 </head>
 <body>
 
-<!-- Cookie Banner -->
-<div id="cookie-banner">
-    <p style="color: #9ca3af; font-size: 0.875rem; margin: 0;">Diese Website verwendet ausschließlich technisch notwendige Cookies. Details finden Sie in dieser Datenschutzerklärung.</p>
-    <button onclick="dismissCookie()" class="cta-btn !py-2 !px-5 !text-xs flex-shrink-0">OK</button>
-</div>
+<script src="/cookie-banner.js"></script>
 
 <!-- NAV -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 md:px-16 lg:px-24 py-4 flex items-center justify-between">
@@ -73,7 +80,9 @@
 
         <h1 class="header-font text-5xl accent-text mb-2">DATENSCHUTZ&shy;ERKLÄRUNG</h1>
         <p style="color: #a0a0a0; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;" class="mb-2">Datenschutzerklärung gem. DSGVO / TKG 2021</p>
-        <p style="color: #a0a0a0; font-size: 0.75rem;" class="mb-12">Stand: März 2026</p>
+        <p style="color: #a0a0a0; font-size: 0.75rem;" class="mb-6">Stand: März 2026</p>
+
+        <p style="background: rgba(245,245,220,0.05); border: 1px solid rgba(245,245,220,0.12); border-radius: 8px; padding: 0.75rem 1rem; color: #a0a0a0; font-size: 0.8rem;" class="mb-12">🇬🇧 This page is available in German only, as required by Austrian law. If you have questions about how your data is handled, email <a href="mailto:nadia@aiinsiders.co">nadia@aiinsiders.co</a> and I'm happy to explain in English.</p>
 
         <div class="legal-section">
             <h2>§ 1 Verantwortliche Person</h2>
@@ -126,9 +135,15 @@
         <div class="legal-section">
             <h2>§ 4 Cookies und Tracking</h2>
 
-            <h3>Ausschließlich technisch notwendige Cookies</h3>
-            <p>Diese Website verwendet ausschließlich technisch notwendige Cookies. Es werden <strong style="color: #d0d0d0;">keine</strong> Analyse-, Marketing- oder Tracking-Cookies eingesetzt.</p>
-            <p class="mt-3">Gemäß § 165 Abs. 3 TKG 2021 ist für technisch notwendige Cookies keine vorherige Einwilligung erforderlich.</p>
+            <h3>Technisch notwendige Cookies</h3>
+            <p>Diese Website verwendet technisch notwendige Cookies, die für den Betrieb der Seite erforderlich sind. Gemäß § 165 Abs. 3 TKG 2021 ist für diese Cookies keine vorherige Einwilligung erforderlich.</p>
+
+            <h3>Google Analytics (nur mit Einwilligung)</h3>
+            <p>Zusätzlich setzen wir mit Ihrer vorherigen Einwilligung <strong style="color: #d0d0d0;">Google Analytics</strong> ein, einen Webanalysedienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland ("Google"). Google Analytics verwendet Cookies, um zu analysieren, wie Besucher:innen die Website nutzen (z. B. aufgerufene Seiten, Verweildauer, Herkunft).</p>
+            <p class="mt-3">Die im Rahmen von Google Analytics erhobenen Daten können an Server von Google in den USA übermittelt und dort verarbeitet werden. Es besteht die Möglichkeit, dass Behörden auf diese Daten zugreifen, ohne dass Ihnen dagegen wirksame Rechtsbehelfe zustehen.</p>
+            <p class="mt-3"><strong style="color: #d0d0d0;">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) i.V.m. § 165 Abs. 3 TKG 2021. Google Analytics wird erst aktiv, wenn Sie im Cookie-Banner auf "Akzeptieren" klicken. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, indem Sie Ihre Cookies löschen oder den Cookie-Hinweis erneut aufrufen und "Ablehnen" wählen.</p>
+            <p class="mt-3"><strong style="color: #d0d0d0;">Speicherdauer:</strong> Bis zu 14 Monate (Google-Analytics-Cookies) bzw. bis zum Widerruf der Einwilligung.</p>
+            <p class="mt-3">Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Datenschutzerklärung</a>.</p>
 
             <h3>Eingesetzte Cookies:</h3>
             <table>
@@ -141,14 +156,19 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><code style="color: #f5f5dc; font-size: 0.8rem;">cookie_ok</code></td>
-                        <td>Speichert, ob der Cookie-Hinweis bestätigt wurde</td>
+                        <td><code style="color: #f5f5dc; font-size: 0.8rem;">cookie_consent</code></td>
+                        <td>Speichert Ihre Cookie-Entscheidung (akzeptiert/abgelehnt)</td>
                         <td>Bis zur Löschung durch Nutzer:in (localStorage)</td>
+                    </tr>
+                    <tr>
+                        <td><code style="color: #f5f5dc; font-size: 0.8rem;">_ga, _ga_*</code></td>
+                        <td>Google Analytics – unterscheidet Nutzer:innen (nur nach Einwilligung)</td>
+                        <td>Bis zu 14 Monate</td>
                     </tr>
                 </tbody>
             </table>
 
-            <p><strong style="color: #d0d0d0;">Keine Nutzung von:</strong> Google Analytics, Meta Pixel, Google Ads, LinkedIn Insight Tag oder vergleichbaren Tracking-Diensten.</p>
+            <p><strong style="color: #d0d0d0;">Keine Nutzung von:</strong> Meta Pixel, Google Ads, LinkedIn Insight Tag oder vergleichbaren Marketing-Tracking-Diensten.</p>
 
             <h3>Eingebettete externe Ressourcen:</h3>
             <p>Diese Website lädt folgende externe Ressourcen, die technisch notwendig sind:</p>
@@ -242,11 +262,6 @@
 <script>
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
-    function dismissCookie() {
-        document.getElementById('cookie-banner').classList.add('hidden');
-        localStorage.setItem('cookie_ok', '1');
-    }
-    if (localStorage.getItem('cookie_ok')) { document.getElementById('cookie-banner').classList.add('hidden'); }
 </script>
 </body>
 </html>

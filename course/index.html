@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics (loads only after cookie consent) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.loadGoogleAnalytics = function() {
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-5LYB92T39L';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-5LYB92T39L');
+  };
+  if (localStorage.getItem('cookie_consent') === 'accepted') {
+    window.loadGoogleAnalytics();
+  }
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>n8n & AI Automation Fundamentals — Learn to Build Real AI Workflows</title>
@@ -132,14 +150,6 @@
             border: 1px solid rgba(245,245,220,0.15);
             border-radius: 16px;
         }
-        /* Cookie banner */
-        #cookie-banner {
-            position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
-            background: rgba(20,20,20,0.97); border-top: 1px solid rgba(245,245,220,0.15);
-            padding: 1rem 1.5rem; display: flex; align-items: center;
-            justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-        }
-        #cookie-banner.hidden { display: none; }
     </style>
 
     <script type="application/ld+json">
@@ -322,11 +332,7 @@
 </head>
 <body>
 
-<!-- Cookie Banner -->
-<div id="cookie-banner">
-    <p class="text-sm text-gray-300 m-0">This site uses only essential cookies necessary for it to function. No tracking or analytics cookies are used. <a href="/datenschutz/" class="underline text-gray-400 hover:text-white">Learn more</a></p>
-    <button onclick="dismissCookie()" class="cta-btn !py-2 !px-5 !text-xs flex-shrink-0">OK</button>
-</div>
+<script src="/cookie-banner.js"></script>
 
 <!-- NAV -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 md:px-16 lg:px-24 py-4 flex items-center justify-between">
@@ -946,14 +952,6 @@
         icon.classList.toggle('rotated');
     }
 
-    // Cookie banner
-    function dismissCookie() {
-        document.getElementById('cookie-banner').classList.add('hidden');
-        localStorage.setItem('cookie_ok', '1');
-    }
-    if (localStorage.getItem('cookie_ok')) {
-        document.getElementById('cookie-banner').classList.add('hidden');
-    }
 </script>
 </body>
 </html>
